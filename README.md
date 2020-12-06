@@ -6,7 +6,7 @@ Rodar o projeto:
 * docker-compose up
 
 Cadastrar aeroporto:
-* $ curl -i -d "{\"airport\": \"airport1\"}" localhost:8000/airport
+* $ curl -i -d "{\"airport\": \"first_airport\"}" localhost:8000/airport
 
 Verificar se cadastrou nova viagem após cadastro do novo aeroporto:
 * $ curl localhost:8000/trip/12345
