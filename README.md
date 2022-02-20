@@ -1,15 +1,20 @@
-Ao cadastrar um novo aeroporto no microserviço airport, seu id é publicado em uma fila que é lida pelo microserviço trip, que irá cadastrar uma nova viagem com base nesse aeroporto.
-
-Este projeto utiliza python 3.8 e docker.
+Ao cadastrar um novo aeroporto no serviço **airport**, seu id é publicado em uma fila que é lida pelo serviço **trip**.
+Atualmente, o serviço trip apenas imprime os dados do novo aerporto. Futuramente deve ser implementada uma funcionalidade
+para cadastrar uma nova viagem a partir do novo aeroporto cadastrado.
 
 Rodar o projeto:
+* docker-compose build
 * docker-compose up
 
 Cadastrar aeroporto:
-* $ curl -i -d "{\"airport\": \"first_airport\"}" localhost:8000/airport
+```
+curl -i -d "{\"airport\": \"first_airport\"}" localhost:8000/airport
+```
 
-Verificar se cadastrou nova viagem após cadastro do novo aeroporto:
-* $ curl localhost:8000/trip/12345
+Recuperar um aeropornto:
+```
+curl localhost:8000/airport/{id}
+```
 
 Ver as filas:
 * http://localhost:15672/

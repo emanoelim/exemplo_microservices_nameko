@@ -25,6 +25,7 @@ services:
         RABBIT_USER: "guest"
         RABBIT_HOST: "rabbit"
         RABBIT_PORT: "5672"
+        PYTHONUNBUFFERED: 1
 
   trip:
     build:
@@ -38,6 +39,7 @@ services:
         RABBIT_USER: "guest"
         RABBIT_HOST: "rabbit"
         RABBIT_PORT: "5672"
+        PYTHONUNBUFFERED: 1
 
   gateway:
     build:

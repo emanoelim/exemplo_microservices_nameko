@@ -12,17 +12,11 @@ class GatewayService:
 
     @http('GET', '/airport/<string:airport_id>')
     def get_airport(self, request, airport_id):
-        airport = self.airports_rpc.get(airport_id)
+        airport = self.airports_rpc.get_by_id(airport_id)
         return json.dumps({'airport': airport})
 
     @http('POST', '/airport')
     def post_airport(self, request):
         data = json.loads(request.get_data(as_text=True))
         airport_id = self.airports_rpc.create(data['airport'])
-
         return airport_id
-
-    @http('GET', '/trip/<string:trip_id>')
-    def get_trip(self, request, trip_id):
-        trip = self.trips_rpc.get(trip_id)
-        return json.dumps({'trip': trip})

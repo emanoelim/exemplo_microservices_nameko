@@ -11,7 +11,7 @@ class AirportsService:
     dispatch = EventDispatcher()
 
     @rpc
-    def get(self, airport_id):
+    def get_by_id(self, airport_id):
         airport = self.redis.get(airport_id)
         return airport
 
@@ -19,6 +19,6 @@ class AirportsService:
     def create(self, airport):
         airport_id = uuid.uuid4().hex
         self.redis.set(airport_id, airport)
-        # publica o id para todos os inscritos em "aeroporto_cadastrado"
         self.dispatch("aeroporto_cadastrado", airport_id)
+        print(f"Novo aeroporto criado: {airport_id}")
         return airport_id
